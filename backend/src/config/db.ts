@@ -1,6 +1,7 @@
 import { error } from "console";
 import mongoose from "mongoose";
 
+//need to add env file to obscure db password from github
 const uri =
   "mongodb+srv://bossunicorn7:<db_password>@cluster0.aqkgflm.mongodb.net/?appName=Cluster0";
 
