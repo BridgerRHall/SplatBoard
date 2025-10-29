@@ -14,22 +14,26 @@ const connectDB = async () => {
     //asserting not null type because typescript
     const pingResult = await conn.connection.db!.admin().command({ ping: 1 });
     console.log("Pinged your deploymen", pingResult);
-  } catch {} // } catch (error) {
+  } catch {
+    console.log("error cannot connect to DB");
+  } // } catch (error) {
   //   throw error;
   // } //finally {
   //   await mongoose.disconnect();
   // }
 };
 
-(async () => {
-  try {
-    await connectDB();
-  } catch {
-    console.log("no db connection");
-  } finally {
-    // 3. CRITICAL: Disconnect here. This forces the asynchronous cleanup
-    // and gives the console buffer time to flush the output before the process exits.
-    await mongoose.disconnect();
-    console.log("Database connection closed.");
-  }
-})();
+// (async () => {
+//   try {
+//     await connectDB();
+//   } catch {
+//     console.log("no db connection");
+//   } finally {
+//     // 3. CRITICAL: Disconnect here. This forces the asynchronous cleanup
+//     // and gives the console buffer time to flush the output before the process exits.
+//     await mongoose.disconnect();
+//     console.log("Database connection closed.");
+//   }
+// })();
+
+export default connectDB;
