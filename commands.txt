@@ -1,0 +1,5 @@
+RUN DB SCRIPT
+cd backend; node --loader ts-node/esm src/config/db.ts
+
+START DEV SERVER
+cd backend; npm run dev
