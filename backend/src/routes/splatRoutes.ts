@@ -3,7 +3,7 @@ import {
   createSplat,
   deleteSplat,
   updateSplat,
-} from "../controllers/splatController.js";
+} from "../controllers/splatsController.js";
 
 import express from "express";
 

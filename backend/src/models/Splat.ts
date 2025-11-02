@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
 const splatSchema = new mongoose.Schema({
-  id: {
-    type: id,
-    required: true,
-  },
   title: {
     type: String,
     required: false,
@@ -18,20 +14,21 @@ const splatSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  xCoord: {
-    // (x, y, z)
-    type: Number,
-    required: true,
-  },
-  yCoord: {
-    // (x, y, z)
-    type: Number,
-    required: true,
-  },
-  zCoord: {
-    // (x, y, z)
-    type: Number,
-    required: true,
+  coords: {
+    type: {
+      x: {
+        type: Number,
+        required: true,
+      },
+      y: {
+        type: Number,
+        required: true,
+      },
+      z: {
+        type: Number,
+        required: true,
+      },
+    },
   },
 });
 
