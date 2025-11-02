@@ -10,6 +10,10 @@ const app = express();
 const port = process.env.PORT;
 
 connectDB();
+
+//middleware
+app.use(express.json());
+
 app.use("/api/splats", router);
 
 app.listen(port, () => {
