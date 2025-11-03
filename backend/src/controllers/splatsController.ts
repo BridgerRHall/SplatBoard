@@ -5,7 +5,7 @@ import Splat from "../models/Splat.js";
 //   res.send("This is the first res of the splatboard app");
 // };
 
-export async function getAllSplats(req: Request, res: Response) {
+export async function getAllSplats(_: Request, res: Response) {
   try {
     const splats = await Splat.find();
     res.status(200).json(splats);
