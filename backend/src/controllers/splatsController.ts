@@ -28,8 +28,37 @@ export async function createSplat(req: Request, res: Response) {
 }
 
 export async function updateSplat(req: Request, res: Response) {
-  res.status(200).send("update splat called");
+  try {
+    const { title, body, color, coords } = req.body;
+    const updatedSplat = await Splat.findByIdAndUpdate(
+      req.params.id,
+      {
+        title,
+        body,
+        color,
+        coords,
+      },
+      {
+        new: true,
+      }
+    );
+    if (!updatedSplat)
+      return res.status(404).json({ message: "Splat not found" });
+    res.status(200).json({ message: "update splat succesful" });
+  } catch (error) {
+    console.error("Error in updateSplat in splatController", error);
+  }
 }
 export async function deleteSplat(req: Request, res: Response) {
-  res.status(200).send("delete splat called");
+  try {
+    const deletedSplat = await Splat.findByIdAndDelete(req.params.id);
+    if (!deletedSplat) {
+      res.status(404).json({ message: "Splat not found" });
+    }
+    return res
+      .status(200)
+      .json({ message: "Splat deleted succesfully", data: deletedSplat });
+  } catch (error) {
+    console.error("Error in deleteSplat in splatController", error);
+  }
 }
