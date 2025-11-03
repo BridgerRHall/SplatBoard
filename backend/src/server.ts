@@ -12,8 +12,18 @@ const port = process.env.PORT;
 connectDB();
 
 //middleware
+//get access to req i.e. parse json bodyies
 app.use(express.json());
 
+//####### AUTH CHECK RATE LIMITING ############
+//custom rate limiter with persistance using sliding window
+//get access to req before api calls
+app.use((req, res, next) => {
+  console.log("middleware");
+  next();
+});
+
+//direct api calls based on req body
 app.use("/api/splats", router);
 
 app.listen(port, () => {
